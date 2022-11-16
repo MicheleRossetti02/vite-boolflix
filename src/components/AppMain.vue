@@ -1,6 +1,8 @@
 <script >
+import axios from "axios";
 import searchbar from './searchbar.vue';
-import { store } from '../store'
+import { store } from '../store';
+import { onMounted } from "vue";
 export default {
     name: 'AppMain',
     components: {
@@ -14,9 +16,18 @@ export default {
     methods: {
         filmSelector() {
             console.log(this.store.searchText);
-            const api_key = '80443d86cca3d27b78ae700406fddecb';
-        }
 
+            this.store.completeApi = `${store.API_URL}?api_key=${store.api_key}&language=en-US&page=1&include_adult=false&query=${this.store.searchText}`
+            // console.log(film);
+            console.log(this.store.completeApi);
+            return this.store.completeApi
+        },
+        searchFilms(url) {
+            console.log(url);
+        }
+    },
+    mounted() {
+        this.searchFilms(this.store.completeApi)
     }
 }
 

@@ -3,7 +3,10 @@ import { store } from '../store'
 
 export default {
     name: 'searchbar',
-    emits: ['searchFunction'],
+    emits: [
+        'searchFunction',
+        // 'newFilm'
+    ],
 
     data() {
         return {
