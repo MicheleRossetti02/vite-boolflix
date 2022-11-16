@@ -1,12 +1,13 @@
 <script >
 import axios from "axios";
 import searchbar from './searchbar.vue';
+import filmList from "./filmList.vue";
 import { store } from '../store';
-import { onMounted } from "vue";
 export default {
     name: 'AppMain',
     components: {
-        searchbar
+        searchbar,
+        filmList
     },
     data() {
         return {
@@ -14,29 +15,34 @@ export default {
         }
     },
     methods: {
-        filmSelector() {
-            console.log(this.store.searchText);
+        // searchFilms(url) {
+        //     // console.log(this.store.searchText);
 
-            this.store.completeApi = `${store.API_URL}?api_key=${store.api_key}&language=en-US&page=1&include_adult=false&query=${this.store.searchText}`
-            // console.log(film);
-            console.log(this.store.completeApi);
-            return this.store.completeApi
-        },
-        searchFilms(url) {
-            console.log(url);
-        }
+        //     // console.log(url);
+        // }
     },
     mounted() {
-        this.searchFilms(this.store.completeApi)
-    }
+        console.log(store.searchText);
+
+        this.store.completeApi = `${this.store.API_URL}?api_key=${this.store.api_key}&language=en-US&page=1&include_adult=false&query=${this.store.searchText}`
+
+        console.log(this.store.completeApi);
+        // this.callApi(this.store.completeApi);
+        axios.get(this.store.completeApi)
+            .then(response => {
+                this.store.films = response.data.results
+                console.log(this.store.films);
+            })
+    },
+
 }
 
 </script>
 
 <template>
 
-
-    <searchbar @searchFunction="filmSelector" />
+    <searchbar />
+    <filmList />
 
 </template>
 
