@@ -15,25 +15,24 @@ export default {
         }
     },
     methods: {
-        // searchFilms(url) {
-        //     // console.log(this.store.searchText);
+        searchFilms() {
+            // console.log(this.store.searchText);
 
-        //     // console.log(url);
-        // }
+            // console.log(url);
+            console.log(store.searchText);
+
+            this.store.completeApi = `${this.store.API_URL}?api_key=${this.store.api_key}&language=en-US&page=1&include_adult=false&query=${this.store.searchText}`
+
+            console.log(this.store.completeApi);
+            // this.callApi(this.store.completeApi);
+            axios.get(this.store.completeApi)
+                .then(response => {
+                    this.store.films = response.data.results
+                    console.log(this.store.films);
+                })
+        }
     },
-    mounted() {
-        console.log(store.searchText);
 
-        this.store.completeApi = `${this.store.API_URL}?api_key=${this.store.api_key}&language=en-US&page=1&include_adult=false&query=${this.store.searchText}`
-
-        console.log(this.store.completeApi);
-        // this.callApi(this.store.completeApi);
-        axios.get(this.store.completeApi)
-            .then(response => {
-                this.store.films = response.data.results
-                console.log(this.store.films);
-            })
-    },
 
 }
 
@@ -41,7 +40,7 @@ export default {
 
 <template>
 
-    <searchbar />
+    <searchbar @searchFunction="searchFilms" />
     <filmList />
 
 </template>
