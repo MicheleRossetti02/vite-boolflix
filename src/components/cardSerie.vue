@@ -1,8 +1,8 @@
 <script>
 export default {
-    name: 'cardFilm',
+    name: 'cardSerie',
     props: {
-        film: Object
+        serie: Object
     },
 }
 
@@ -12,19 +12,19 @@ export default {
 
     <ul>
         <li>
-            {{ film.title }}
+            {{ serie.name }}
         </li>
         <li>
-            {{ film.original_title }}
+            {{ serie.original_name }}
         </li>
-        <li v-if="film.original_language === 'en'">
+        <li v-if="serie.original_language === 'en'">
             <img src="../assets/img/en.png" alt="">
         </li>
-        <li v-else="film.original_language === 'ja'">
+        <li v-else="serie.original_language === 'ja'">
             <img src="../assets/img/ja.png" alt="">
         </li>
         <li>
-            {{ film.vote_average }}
+            {{ serie.vote_average }}
         </li>
 
     </ul>

@@ -1,11 +1,11 @@
 <script>
-import cardFilm from './cardFilm.vue'
+import cardSerie from './cardSerie.vue'
 import { store } from '../store.js'
 
 export default {
     name: 'filmList',
     components: {
-        cardFilm
+        cardSerie
     },
     data() {
         return {
@@ -20,7 +20,7 @@ export default {
 <template>
 
     <div class=" row row-cols-5">
-        <cardFilm :film=film v-for="film in store.films"></cardFilm>
+        <cardSerie :serie=serie v-for="serie in store.series"></cardSerie>
     </div>
 
 </template>
