@@ -18,6 +18,8 @@ export default {
 <template>
 
     <ul>
+
+        <img class="col-auto" :src="store.API_IMG + film.poster_path" alt="">
         <li>
             {{ film.title }}
         </li>
@@ -25,10 +27,10 @@ export default {
             {{ film.original_title }}
         </li>
         <li v-if="film.original_language === 'en'">
-            <img src="../assets/img/en.png" alt="">
+            <img class="icon" src="../assets/img/en.png" alt="">
         </li>
         <li v-else="film.original_language === 'ja'">
-            <img src="../assets/img/ja.png" alt="">
+            <img class="icon" src="../assets/img/ja.png" alt="">
         </li>
         <div class=" d-flex">
             <!-- stelline voto -->
@@ -45,7 +47,12 @@ export default {
 
 <style scoped>
 img {
+    width: 100%;
+}
+
+.icon {
     width: 20px;
+
 }
 
 .yellow {

@@ -25,7 +25,11 @@ export default {
 
             this.store.apiFilm = `${this.store.API_URL}?api_key=${this.store.api_key}&language=en-US&page=${this.store.page}&include_adult=false&query=${this.store.searchText}`
             this.store.apiSerie = `${this.store.API_URL_SERIE}?api_key=${this.store.api_key}&language=en-US&page=${this.store.page}&include_adult=false&query=${this.store.searchText}`
-            console.log(this.store.apiFilm);
+            // this.store.apiImg = `${this.store.API_IMG}${this.store.films.poster_path}`
+            // console.log(this.store.apiFilm);
+            console.log(this.store.apiSerie);
+            console.log(this.store.apiImg);
+
             // this.callApi(this.store.apiFilm);
             axios.get(this.store.apiFilm)
                 .then(response => {
