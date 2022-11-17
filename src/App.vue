@@ -9,8 +9,12 @@ export default {
 </script>
 
 <template>
+  <font-awesome-icon icon="fa-solid fa-user-secret" />
+
   <div class="container">
     <AppMain></AppMain>
+
+
 
   </div>
 </template>

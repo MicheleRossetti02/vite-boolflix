@@ -9,6 +9,18 @@ export const store = reactive({
     api_key: '80443d86cca3d27b78ae700406fddecb',
     apiFilm: '',
     apiSerie: '',
+    n: 0,
+
+    voteStar(vote) {
+        let newVote = vote / 2;
+        const rating = Math.ceil(newVote)
+        // console.log(vote);
+        // console.log(newVote);
+        console.log(rating);
+        return rating
+
+    }
+
 })
 
 // ?api_key=80443d86cca3d27b78ae700406fddecb&language=en-US&page=1&include_adult=false&query=matrix

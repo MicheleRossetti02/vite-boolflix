@@ -18,7 +18,6 @@ export default {
 </script>
 
 <template>
-
     <div class=" row row-cols-5">
         <cardSerie :serie=serie v-for="serie in store.series"></cardSerie>
     </div>

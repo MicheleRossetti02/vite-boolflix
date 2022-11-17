@@ -21,7 +21,7 @@ export default {
             // console.log(this.store.searchText);
 
             // console.log(url);
-            console.log(store.searchText);
+            console.log(this.store.searchText);
 
             this.store.apiFilm = `${this.store.API_URL}?api_key=${this.store.api_key}&language=en-US&page=${this.store.page}&include_adult=false&query=${this.store.searchText}`
             this.store.apiSerie = `${this.store.API_URL_SERIE}?api_key=${this.store.api_key}&language=en-US&page=${this.store.page}&include_adult=false&query=${this.store.searchText}`
@@ -38,6 +38,7 @@ export default {
                     this.store.series = response.data.results
                     console.log(this.store.series);
                 })
+            this.store.searchText = ''
         }
     },
     //    &language=en-US&page=1&include_adult=false&query=tom
