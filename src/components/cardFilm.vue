@@ -97,7 +97,7 @@ export default {
     height: 100%;
 
     &:hover {
-        border: 1px solid red;
+        border: 1px solid black;
         overflow: hidden;
     }
 
