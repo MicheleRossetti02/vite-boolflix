@@ -7,9 +7,25 @@ export default {
     },
     data() {
         return {
-            store
+            store,
+
         }
-    }
+    },
+    methods: {
+        generateFlag(lang_code) {
+            console.log(lang_code);
+            return new URL(`../assets/img/${lang_code}.png`, import.meta.url).href
+        },
+        flag(lang_code) {
+            if (this.store.flags.includes(lang_code)) {
+                return true
+
+            }
+            return false
+
+        }
+
+    },
 
 }
 
@@ -26,12 +42,17 @@ export default {
         <li>
             {{ film.original_title }}
         </li>
+        <li>
+            <img class="icon" v-if="flag(film.original_language)" :src="generateFlag(film.original_language)" alt="">
+            <span v-else>{{ film.original_language }}</span>
+        </li>
+        <!-- 
         <li v-if="film.original_language === 'en'">
             <img class="icon" src="../assets/img/en.png" alt="">
         </li>
         <li v-else="film.original_language === 'ja'">
             <img class="icon" src="../assets/img/ja.png" alt="">
-        </li>
+        </li> -->
         <div class=" d-flex">
             <!-- stelline voto -->
             <strong class="">Voto: </strong>

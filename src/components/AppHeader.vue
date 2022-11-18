@@ -70,7 +70,7 @@ export default {
                 <a class="px-2" href="">La mia lista</a>
                 <a class="px-2" href="">Sfoglia per lingua</a>
             </div>
-            <div class="col d-flex right-bar">
+            <div class="col  right-bar">
 
                 <div class="col-1 ">
                     <button type="button" class="btn btn-link" @click="activeButton">
@@ -79,7 +79,7 @@ export default {
                     </button>
 
                 </div>
-                <div class=" col-4 search d-flex p-0 align-items-center " v-if="store.show">
+                <div class=" search  p-0 align-items-center " v-if="store.show">
 
                     <Searchbar @searchFunction="searchFilms" />
 
@@ -92,8 +92,14 @@ export default {
 </template>
 
 <style scoped>
-.right-bar {
+/* .right-bar {
     flex-direction: row-reverse;
+} */
+.search {
+    width: 350px;
+    position: absolute;
+    right: 85px;
+    top: 25px;
 }
 
 .barra {
@@ -103,6 +109,14 @@ export default {
 
 .container-fluid {
     background-color: black;
+    position: absolute;
+}
+
+button {
+    position: absolute;
+    right: 40px;
+    top: 22px;
+
 }
 
 img {

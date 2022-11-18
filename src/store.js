@@ -13,6 +13,13 @@ export const store = reactive({
     apiImg: '',
     n: 0,
     show: false,
+    flags: [
+        'en',
+        'ja',
+        'it'
+
+    ],
+
 
 
     voteStar(vote) {
