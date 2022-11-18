@@ -18,13 +18,18 @@ export default {
 </script>
 
 <template>
-    <AppHeader />
-    <FilmList />
-    <SerieList />
 
+    <AppHeader />
+
+    <div class="container-fluid">
+        <FilmList />
+        <SerieList />
+    </div>
 
 </template>
 
 <style scoped>
-
+.container-fluid {
+    position: relative;
+}
 </style>
