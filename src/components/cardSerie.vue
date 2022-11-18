@@ -22,8 +22,10 @@ export default {
             }
             return false
 
-        }
+        },
+        infoCard() {
 
+        }
     },
 
 }
@@ -31,6 +33,7 @@ export default {
 </script>
 
 <template>
+
     <div class="card" style="width: 18rem;">
 
         <img class="col-auto" :src="store.API_IMG + serie.poster_path" alt="">

@@ -12,7 +12,9 @@ export const store = reactive({
     apiSerie: '',
     apiImg: '',
     n: 0,
-    show: false,
+    showBar: false,
+    showCard: true,
+    activeindex: 0,
     flags: [
         'en',
         'ja',

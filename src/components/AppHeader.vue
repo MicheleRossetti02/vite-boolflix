@@ -17,12 +17,12 @@ export default {
     },
     methods: {
         activeButton() {
-            if (store.show === false) {
-                store.show = true
+            if (store.showBar === false) {
+                store.showBar = true
 
             }
             else {
-                store.show = false
+                store.showBar = false
             }
 
         },
@@ -61,7 +61,7 @@ export default {
 <template>
     <div class="container-fluid">
         <div class="row align-items-center">
-            <div class="col">
+            <div class="col-10">
                 <img src="../assets/img/logoNetflix.png" alt="">
                 <a class="px-2" href="">Home</a>
                 <a class="px-2" href="">Serie Tv</a>
@@ -79,7 +79,7 @@ export default {
                     </button>
 
                 </div>
-                <div class=" search  p-0 align-items-center " v-if="store.show">
+                <div class=" search  p-0 align-items-center " v-if="store.showBar">
 
                     <Searchbar @searchFunction="searchFilms" />
 

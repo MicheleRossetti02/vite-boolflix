@@ -12,7 +12,15 @@ export default {
             store
         }
     },
-
+    methods: {
+        setActiveIndex(index) {
+            // let activeIndex = 0
+            this.activeIndex = index + 1
+            console.log(this.activeIndex);
+            // this.store.push(activeIndex)
+            // console.log(this.store.activeIndex); 
+        },
+    }
 }
 
 </script>
@@ -20,7 +28,7 @@ export default {
 <template>
 
     <div class=" row row-cols-5">
-        <CardFilm :film=film v-for="film in store.films"></CardFilm>
+        <CardFilm :film=film v-for="film, index in store.films" @click="setActiveIndex(index)"></CardFilm>
     </div>
 
 </template>
