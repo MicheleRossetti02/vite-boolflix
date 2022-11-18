@@ -1,7 +1,7 @@
 <script>
 import { store } from '../store'
 export default {
-    name: 'cardSerie',
+    name: 'CardSerie',
     props: {
         serie: Object
     },
@@ -18,7 +18,7 @@ export default {
 <template>
 
     <ul>
-        <img class="col-auto" :src="store.API_IMG + film.poster_path" alt="">
+        <img class="col-auto" :src="store.API_IMG + serie.poster_path" alt="">
 
         <li>
             {{ serie.name }}

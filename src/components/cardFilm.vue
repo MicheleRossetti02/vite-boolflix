@@ -1,7 +1,7 @@
 <script>
 import { store } from '../store'
 export default {
-    name: 'cardFilm',
+    name: 'CardFilm',
     props: {
         film: Object
     },

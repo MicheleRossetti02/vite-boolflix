@@ -11,12 +11,12 @@ export default {
 <template>
   <font-awesome-icon icon="fa-solid fa-user-secret" />
 
-  <div class="container">
-    <AppMain></AppMain>
+
+  <AppMain></AppMain>
 
 
 
-  </div>
+
 </template>
 
 <style scoped>

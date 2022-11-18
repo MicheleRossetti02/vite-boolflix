@@ -12,6 +12,8 @@ export const store = reactive({
     apiSerie: '',
     apiImg: '',
     n: 0,
+    show: false,
+
 
     voteStar(vote) {
         let newVote = vote / 2;

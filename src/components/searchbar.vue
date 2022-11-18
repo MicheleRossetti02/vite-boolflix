@@ -2,7 +2,7 @@
 import { store } from '../store'
 
 export default {
-    name: 'searchbar',
+    name: 'Searchbar',
     emits: [
         'searchFunction',
         // 'newFilm'
@@ -19,11 +19,17 @@ export default {
 
 <template>
 
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="cerca un film" aria-label="cerca un film"
+    <div class="input-group mb-3 d-flex">
+        <input type="text" class="form-control" placeholder="cerca" aria-label="cerca un film o una serie tv"
             aria-describedby="button-addon2" v-model="store.searchText" @keyup.enter="$emit('searchFunction')">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2 "
-            @click="$emit('searchFunction')">search</button>
+        <button class="btn btn-light" type="button" id="button-addon2 " @click="$emit('searchFunction')">search</button>
     </div>
 
 </template>
+<style>
+/* 
+.input-group {
+    height: 50%;
+    align-items: center;
+} */
+</style>
