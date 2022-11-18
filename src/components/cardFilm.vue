@@ -45,7 +45,7 @@ export default {
         <!-- img card    -->
         <div class="card card-image">
 
-            <img :src="store.API_IMG + film.poster_path" alt="">
+            <img class="image-poster" :src="store.API_IMG + film.poster_path" alt="">
 
         </div>
 
@@ -56,29 +56,53 @@ export default {
 
                 <!-- title -->
                 <div class="title">
-                    <div v-if="film.title === film.original_title">
-                        <h5>{{ film.title }}</h5>
+                    <div class="d-flex align-items-center" v-if="film.title === film.original_title">
+                        <h5><strong>Titolo:</strong></h5>
+                        <h5 class="ms-2">{{ film.title }}</h5>
                     </div>
                     <div v-else>
-                        <h4>{{ film.title }}</h4>
-                        <p class="mb-1">
-                            {{ film.original_title }}
-                        </p>
+                        <div class=" d-flex align-items-center">
+                            <h5><strong>Titolo:</strong></h5>
+                            <h5 class="ms-2">{{ film.title }}</h5>
+                        </div>
+                        <div class="original-title d-flex align-items-center">
+                            <h5><strong>Titolo originale:</strong></h5>
+
+                            <h5 class="mb-1">
+                                {{ film.original_title }}
+                            </h5>
+                        </div>
+
                     </div>
                 </div>
-
-                <!-- language -->
-                <div class="language flag">
-                    <img class="icon" v-if="flag(film.original_language)" :src="generateFlag(film.original_language)"
-                        alt="">
-                    <span v-else>{{ film.original_language }}</span>
+                <!-- info -->
+                <div class="info-film ">
+                    <h5> <strong>Trama: </strong></h5>
+                    <p class="p-0 m-0">{{ film.overview }}</p>
                 </div>
 
-                <!-- stelline voto -->
-                <div class=" d-flex">
-                    <strong class="">Voto: </strong>
-                    <div v-for="n in store.voteStar(film.vote_average)"><i class="fa-solid fa-star yellow"></i></div>
-                    <div v-for="n in 5 - store.voteStar(film.vote_average)"><i class="fa-solid fa-star grey"></i></div>
+                <div class="other-info position-absolute">
+
+                    <!-- stelline voto -->
+                    <div class=" d-flex voto align-items-center">
+
+                        <h5 class="pt-2"> <strong class="">Voto: </strong> </h5>
+                        <div v-for="n in store.voteStar(film.vote_average)"><i class="fa-solid fa-star yellow"></i>
+                        </div>
+                        <div v-for="n in 5 - store.voteStar(film.vote_average)"><i class="fa-solid fa-star grey"></i>
+                        </div>
+                    </div>
+
+                    <!-- language -->
+                    <div class="language flag d-flex">
+                        <h5> <strong class="">Lingua: </strong></h5>
+
+                        <img class="icon ps-2 " v-if="flag(film.original_language)"
+                            :src="generateFlag(film.original_language)" alt="">
+                        <h5 class="ps-2" v-else>{{ film.original_language }}</h5>
+                    </div>
+
+
                 </div>
             </div>
         </div>
@@ -89,59 +113,87 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+// .other-info {
+//     // bottom: 90px;
+// }
+.card-image {
+    height: 350px;
+}
+
+h5 {
+    font-size: 0.8rem;
+}
+
+p {
+    font-size: 0.7rem;
+
+}
+
+.card-info {
+    /* position: relative; */
+    // max-height: 355px;
+    width: 100%;
+    height: 100%;
+    /* position: absolute; */
+    // width: 359.5px;
+    // height: 538.25px;
+    top: 0;
+    opacity: 0;
+    overflow-y: auto;
+
+    // .voto {
+    //     position: absolute;
+    //     bottom: 10px;
+    // }
+}
+
 .filmCard {
     /* position: relative; */
     width: calc(100%/12*1.5);
     /* height: 300px; */
-    border: 1px solid transparent;
-    height: 100%;
+    border: 1px solid white;
 
-    &:hover {
-        border: 1px solid black;
-        overflow: hidden;
+    // height: 540px;
+
+    img {
+        width: 100%;
+        height: 100%;
+
+        // object-fit: cover;
     }
+
+    // &:hover .card-image {
+    //     // opacity: 100%;
+    // }
 
     &:hover .card-info {
-        display: block;
-    }
+        // display: block;
+        font-size: 1rem;
+        opacity: (85%);
 
-    &:hover img {
-        filter: opacity(5%);
-    }
 
-    .card-info {
-        display: none;
-        font-size: 0.75rem;
-        font-weight: 200;
 
         .language img {
-            filter: opacity(100%);
+            // filter: opacity(100%);
+            width: 30px;
+
         }
     }
 
+    // &:hover img {
+    //     // filter: opacity(20%);
+    // }
+
 }
 
 
 
-.card-info {
-    /* position: relative; */
-
-    /* height: 100%; */
-    /* position: absolute; */
-    width: 350px;
-    height: 540px;
-    top: 0;
-}
 
 /* 
 img {
      width: 90%; 
 } */
 
-.icon {
-    width: 20px;
-
-}
 
 .yellow {
     color: rgb(234, 234, 33);

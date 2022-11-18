@@ -33,7 +33,7 @@ export default {
 </script>
 
 <template>
-    <div class="serieCard">
+    <div class="serieCard p-0 position-relative">
 
         <!-- img card    -->
         <div class="card card-image">
@@ -47,97 +47,155 @@ export default {
 
 
                 <!-- title card -->
-                <div v-if="serie.name === serie.original_name">
-                    <h5> {{ serie.name }}</h5>
+                <div class="title">
+                    <div class="d-flex align-items-center" v-if="serie.name === serie.original_name">
 
+                        <h5><strong>Titolo:</strong></h5>
+                        <h5 class="ms-2">{{ serie.name }}</h5>
+                    </div>
+                    <div v-else>
+                        <div class=" d-flex align-items-center">
+                            <h5><strong>Titolo:</strong></h5>
+                            <h5 class="ms-2">{{ serie.name }}</h5>
+                        </div>
+                        <div class="original-title d-flex align-items-center">
+                            <h5><strong>Titolo originale:</strong></h5>
+
+                            <h5 class="mb-1">
+                                {{ serie.original_name }}
+                            </h5>
+                        </div>
+
+                    </div>
                 </div>
-                <div v-else>
-                    <h4> {{ serie.name }}</h4>
 
-                    <p class="mb-1">
-                        {{ serie.original_name }}
-                    </p>
+                <!-- info -->
+                <div class="info-film ">
+                    <strong>Trama: </strong>
+                    <p>{{ serie.overview }}</p>
+                </div>
+
+                <div class="other-info position-absolute">
+
+                    <!-- stelline voto -->
+                    <div class=" d-flex voto">
+                        <strong class="">Voto: </strong>
+                        <div v-for="n in store.voteStar(serie.vote_average)"><i class="fa-solid fa-star yellow"></i>
+                        </div>
+                        <div v-for="n in 5 - store.voteStar(serie.vote_average)"><i class="fa-solid fa-star grey"></i>
+                        </div>
+                    </div>
+                    <div class="language flag">
+                        <!-- language flag -->
+                        <strong class="">Lingua: </strong>
+
+                        <img class="icon" v-if="flag(serie.original_language)"
+                            :src="generateFlag(serie.original_language)" alt="">
+                        <span v-else>{{ serie.original_language }}</span>
+                    </div>
+
                 </div>
 
                 <!-- language -->
-                <div class="language flag">
-                    <!-- language flag -->
-                    <img class="icon" v-if="flag(serie.original_language)" :src="generateFlag(serie.original_language)"
-                        alt="">
-                    <span v-else>{{ serie.original_language }}</span>
-                </div>
 
-                <!-- stelline voto -->
-
-                <div class=" d-flex">
-                    <strong class="">Voto: </strong>
-                    <div v-for="n in store.voteStar(serie.vote_average)"><i class="fa-solid fa-star yellow"></i></div>
-                    <div v-for="n in 5 - store.voteStar(serie.vote_average)"><i class="fa-solid fa-star grey"></i></div>
-                </div>
 
             </div>
+            <!-- language -->
 
 
+            <!-- stelline voto -->
 
 
         </div>
 
 
+
+
     </div>
+
+
+
 </template>
 
 <style lang="scss" scoped>
-.serieCard {
-    /* position: relative; */
-    width: calc(100%/12*1.5);
-    /* height: 300px; */
-    border: 1px solid transparent;
-    height: 100%;
+.card-image {
+    height: 350px;
+}
 
-    &:hover {
-        border: 1px solid black;
-        overflow: hidden;
-    }
+h5 {
+    font-size: 0.8rem;
+}
 
-    &:hover .card-info {
-        display: block;
-    }
-
-    &:hover img {
-        filter: opacity(5%);
-    }
-
-    .card-info {
-        display: none;
-        font-size: 0.75rem;
-        font-weight: 200;
-
-        .language img {
-            filter: opacity(100%);
-        }
-    }
+p {
+    font-size: 0.7rem;
 
 }
 
 .card-info {
     /* position: relative; */
-
-    /* height: 100%; */
+    // max-height: 355px;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
     /* position: absolute; */
-    width: 350px;
-    height: 540px;
+    // width: 359.5px;
+    // height: 538.25px;
     top: 0;
+    opacity: 0;
+    overflow-y: auto;
+    // .voto {
+    //     position: absolute;
+    //     bottom: 10px;
+    // }
 }
+
+.serieCard {
+    /* position: relative; */
+    width: calc(100%/12*1.5);
+    /* height: 300px; */
+    border: 1px solid white;
+
+    // height: 540px;
+
+    img {
+        width: 100%;
+        height: 100%;
+
+        // object-fit: cover;
+    }
+
+    // &:hover .card-image {
+    //     // opacity: 100%;
+    // }
+
+    &:hover .card-info {
+        // display: block;
+        font-size: 1rem;
+        opacity: (85%);
+
+
+
+        .language img {
+            // filter: opacity(100%);
+            width: 30px;
+
+        }
+    }
+
+    // &:hover img {
+    //     // filter: opacity(20%);
+    // }
+
+}
+
+
 
 /* 
 img {
      width: 90%; 
 } */
 
-.icon {
-    width: 20px;
 
-}
 
 .yellow {
     color: rgb(234, 234, 33);
