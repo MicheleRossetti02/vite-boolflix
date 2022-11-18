@@ -13,7 +13,7 @@ export default {
     },
     methods: {
         generateFlag(lang_code) {
-            console.log(lang_code);
+            // console.log(lang_code);
             return new URL(`../assets/img/${lang_code}.png`, import.meta.url).href
         },
         flag(lang_code) {
@@ -33,35 +33,32 @@ export default {
 
 <template>
 
-    <ul>
+    <div class="card" style="width: 18rem;">
 
-        <img class="col-auto" :src="store.API_IMG + film.poster_path" alt="">
-        <li>
-            {{ film.title }}
-        </li>
-        <li>
-            {{ film.original_title }}
-        </li>
-        <li>
-            <img class="icon" v-if="flag(film.original_language)" :src="generateFlag(film.original_language)" alt="">
-            <span v-else>{{ film.original_language }}</span>
-        </li>
-        <!-- 
-        <li v-if="film.original_language === 'en'">
-            <img class="icon" src="../assets/img/en.png" alt="">
-        </li>
-        <li v-else="film.original_language === 'ja'">
-            <img class="icon" src="../assets/img/ja.png" alt="">
-        </li> -->
+        <img :src="store.API_IMG + film.poster_path" alt="">
+
+        <div v-if="film.title === film.original_title">
+            <h5>{{ film.title }}</h5>
+
+        </div>
+        <div v-else>
+            <h4>{{ film.title }}</h4>
+            <p class="mb-1">
+                {{ film.original_title }}
+
+            </p>
+        </div>
+        <img class="icon" v-if="flag(film.original_language)" :src="generateFlag(film.original_language)" alt="">
+        <span v-else>{{ film.original_language }}</span>
         <div class=" d-flex">
             <!-- stelline voto -->
             <strong class="">Voto: </strong>
             <div v-for="n in store.voteStar(film.vote_average)"><i class="fa-solid fa-star yellow"></i></div>
-            <div v-for="n in 5 - store.voteStar(film.vote_average)"><i class="fa-solid fa-star grey"></i>
-            </div>
+            <div v-for="n in 5 - store.voteStar(film.vote_average)"><i class="fa-solid fa-star grey"></i></div>
         </div>
-        <!-- v-for="n in store.voteStar(vote)" -->
-    </ul>
+
+    </div>
+
 
 
 </template>
